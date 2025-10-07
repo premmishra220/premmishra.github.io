@@ -1,245 +1,718 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prem Mishra | MERN Stack Developer</title>
-  <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #222;
-      --primary-color: #007bff;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prem Prakash Mishra | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+ <style>
+  * ==============================
+   Global Styles
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #000000; /* pure black */
+    color: #e0e0e0;            /* readable text */
+    line-height: 1.6;
+}
+
+/* ==============================
+   Hero Section
+============================== */
+header#hero {
+    background-color: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header#hero img {
+    border-radius: 50%;
+    border: 4px solid #0d6efd;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+    transition: transform 0.3s ease;
+}
+
+header#hero img:hover {
+    transform: scale(1.1);
+}
+
+header#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+header#hero p {
+    color: #bbbbbb;
+    margin-bottom: 10px;
+}
+
+header#hero .btn {
+    margin: 5px;
+}
+
+/* ==============================
+   Section Styles
+============================== */
+section {
+    padding: 60px 20px;
+    background-color: #000000;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #0d6efd; /* primary highlight */
+}
+
+section p, section li {
+    font-size: 1.1rem;
+    color: #e0e0e0; /* readable gray text */
+    margin-bottom: 20px;
+}
+
+/* ==============================
+   Cards for Projects / Certificates / Skills
+============================== */
+.card, .skills-card {
+    background-color: #111111;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.card:hover, .skills-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+}
+
+.card h5 {
+    color: #0d6efd;
+    margin-bottom: 10px;
+}
+
+.card p, .skills-card p {
+    color: #e0e0e0;
+}
+
+/* ==============================
+   Buttons
+============================== */
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+}
+
+.btn-outline-light {
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+.btn-outline-light:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+
+/* ==============================
+   About / Internship Section
+============================== */
+#about, #internship {
+    background-color: #1e1e2f; /* dark gray for contrast */
+    padding: 60px 20px;
+    border-radius: 12px;
+    color: #e0e0e0; /* readable text */
+}
+
+/* ==============================
+   Skills Section
+============================== */
+#skills {
+    background-color: #000000; /* black */
+    padding: 60px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skills-card {
+    background-color: #2a2a3d; /* slightly lighter than black */
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: 12px;
+    width: 160px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.skills-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+}
+
+
+/* ==============================
+   About Section
+============================== */
+#about {
+    background-color: #1e1e2f; /* dark gray for readability */
+    padding: 60px 20px;
+    border-radius: 12px;
+    color: #e0e0e0; /* readable text */
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    color: #0d6efd; /* highlight */
+    margin-bottom: 20px;
+}
+
+#about p {
+    font-size: 1.1rem;
+    color: #dcdcdc;
+    line-height: 1.8;
+}
+
+
+
+/* ==============================
+   Contact Section
+============================== */
+#contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#contact input,
+#contact textarea {
+    background-color: #111111;
+    color: #e0e0e0;
+    border: 1px solid #0d6efd;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+    color: #bbbbbb;
+}
+
+#contact button {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+/* ==============================
+   Footer
+============================== */
+footer {
+    background-color: #000000;
+    color: #bbbbbb;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+/* ==============================
+   Animations (Animate.css)
+============================== */
+.animate__animated {
+    visibility: visible;
+}
+
+/* ==============================
+   Responsive
+============================== */
+@media(max-width: 768px) {
+    header#hero h1 {
+        font-size: 2.2rem;
     }
-    [data-theme="dark"] {
-      --bg-color: #111;
-      --text-color: #f5f5f5;
-      --primary-color: #1e90ff;
+
+    section h2 {
+        font-size: 2rem;
     }
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      transition: all 0.4s ease;
+
+    header#hero img {
+        width: 130px;
+        height: 130px;
     }
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: var(--primary-color);
-      color: #fff;
+
+    .skills-card {
+        width: 140px;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.8rem;
+}
+
+@media(max-width: 480px) {
+    header#hero h1 {
+        font-size: 1.8rem;
     }
-    header p {
-      font-size: 1.2rem;
+
+    section h2 {
+        font-size: 1.6rem;
     }
-    section {
-      padding: 3rem 2rem;
-      max-width: 900px;
-      margin: auto;
-      border-bottom: 1px solid #ccc;
+
+    .skills-card {
+        width: 120px;
+        font-size: 0.9rem;
     }
-    h2 {
-      color: var(--primary-color);
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .dark-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: var(--primary-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-    }
-    .skills, .projects, .slides {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .card {
-      background: rgba(0,0,0,0.03);
-      padding: 1rem;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-    [data-theme="dark"] .card {
-      background: rgba(255,255,255,0.1);
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: var(--primary-color);
-      color: #fff;
-    }
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-  </style>
+}
+/* 🌟 Achievements Section */
+.achievements {
+  background: linear-gradient(135deg, #000000 0%, #111111 100%);
+  color: #ffffff;
+  text-align: center;
+  padding: 80px 20px;
+  min-height: 100vh;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.achievements h2 {
+  font-size: 2.5rem;
+  color: #00e6e6;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0, 230, 230, 0.7);
+}
+
+.achievement-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.achievement-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  width: 300px;
+  padding: 25px;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.achievement-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #00e6e6;
+  border-color: #00e6e6;
+}
+
+.achievement-card h3 {
+  color: #00ffff;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.achievement-card p {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🌗 Dark Mode Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.toggle-label {
+  width: 50px;
+  height: 25px;
+  background-color: #ccc;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-label::after {
+  content: "";
+  width: 23px;
+  height: 23px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: 0.3s;
+}
+
+/* Dark mode active animation */
+input[type="checkbox"]:checked + .toggle-label {
+  background-color: #333;
+}
+
+input[type="checkbox"]:checked + .toggle-label::after {
+  transform: translateX(25px);
+  background-color: yellow;
+}
+
+/* 🌙 Dark Mode Styles */
+body.dark-mode {
+  background-color: #000;
+  color: #fff;
+  transition: background 0.5s, color 0.5s;
+}
+
+body.dark-mode a {
+  color: #0ff;
+}
+
+body.dark-mode section {
+  background-color: #111;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+ </style>
+  </head>
+  <body>
+<!-- 🌙 Light/Dark Mode Toggle Button -->
+<div class="theme-toggle">
+  <input type="checkbox" id="darkModeToggle">
+  <label for="darkModeToggle" class="toggle-label"></label>
+</div>
+
+
+
+
+    <script src="js/script.js"></script>
+
+
+
+
+
+
+  </body>
 </head>
+
+
+
+
+
 <body>
 
-  <div class="dark-toggle" id="themeToggle">🌙</div>
-
-  <header>
-    <h1>Prem Mishra</h1>
-    <p>MERN Stack Developer | Backend Engineer | Data Enthusiast</p>
-  </header>
-
-  <section>
-    <h2>About Me</h2>
-    <p>I'm a passionate MERN Stack Developer from Pune, skilled in developing efficient, scalable, and user-friendly web applications. I focus on backend architecture, APIs, and database design.</p>
-  </section>
-
-  <section>
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="card">MongoDB</div>
-      <div class="card">Express.js</div>
-      <div class="card">React.js</div>
-      <div class="card">Node.js</div>
-      <div class="card">REST API</div>
-      <div class="card">JavaScript (ES6+)</div>
-      <div class="card">Git & GitHub</div>
-      <div class="card">Postman</div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Prem Mishra</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+        <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
     </div>
-  </section>
+  </div>
+</nav>
+<header id="hero">
+  <img src="    https://media.licdn.com/dms/image/v2/D4D03AQHZ5xkoEF3AIA/profile-displayphoto-crop_800_800/B4DZlEqUCbJMAI-/0/1757793568992?e=1762387200&v=beta&t=4R4CVGcjjy5gljW1FN4HkGPkOLiq1vLoCqXi_4h296I " alt="Prem Prakash Mishra">
+  <h1 class="animate__animated animate__fadeInDown">Prem Prakash Mishra</h1>
+  <p class="lead animate__animated animate__fadeInUp animate__delay-1s">
+    MERN Stack Developer | AIML Enthusiast | Problem Solver
+  </p>
 
-  <section>
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card">Portfolio Website</div>
-      <div class="card">E-Commerce Platform</div>
-      <div class="card">Blog App (MERN)</div>
-      <div class="card">Smart Classroom Scheduler</div>
+  <div class="mt-3 animate__animated animate__fadeInUp animate__delay-2s">
+    <a href="#projects" class="btn btn-primary btn-lg">View Projects</a>
+    <a href="#contact" class="btn btn-outline-light btn-lg">Contact Me</a>
+  </div>
+
+  <div class="mt-3 animate__animated animate__fadeInUp animate__delay-3s">
+    <p>📍 Sinhgad Institute of Technology, Lonavla</p>
+    <p>📧 <a href="mailto:premmishrasonb@gmail.com" class="text-info">Mail</a></p>
+   <p>📞 <a href="tel:+919876543210" class="text-info">Ph</a></p>
+    <p>🔗 <a href="  www.linkedin.com/in/prem-prakash-mishra-20516a288  " target="_blank" class="text-info">LinkedIn</a></p>
+  </div>
+</header>
+
+ 
+
+
+<!-- ===== About Section ===== -->
+<section id="about" class="animate__animated animate__fadeInUp">
+  <h2>About Me</h2>
+  <p>
+    I am <strong>Prem Prakash Mishra</strong>, a passionate MERN Stack Developer and AIML enthusiast. 
+    Experienced in HTML, CSS, JavaScript, React, NodeJS, ExpressJS, MongoDB, and Machine Learning. 
+    I love building interactive, responsive, and scalable web applications that solve real-world problems.
+  </p>
+  <p>
+    Currently pursuing my engineering at <strong>Sinhgad Institute of Technology, Lonavla</strong>. 
+    I have completed 5 certifications and continue to learn new technologies to enhance my skills.
+  </p>
+</section>
+
+<!-- ===== Skills Section ===== -->
+<section id="skills" class="animate__animated animate__fadeInUp">
+  <div class="skills-card animate__animated animate__fadeInUp">HTML</div>
+  <div class="skills-card animate__animated animate__fadeInUp animate__delay-1s">CSS</div>
+  <div class="skills-card animate__animated animate__fadeInUp animate__delay-2s">JavaScript</div>
+  <div class="skills-card animate__animated animate__fadeInUp animate__delay-3s">React</div>
+  <div class="skills-card animate__animated animate__fadeInUp animate__delay-4s">NodeJS</div>
+  <div class="skills-card animate__animated animate__fadeInUp animate__delay-5s">ExpressJS</div>
+  <div class="skills-card animate__animated animate__fadeInUp animate__delay-6s">MongoDB</div>
+  <div class="skills-card animate__animated animate__fadeInUp animate__delay-7s">Machine Learning</div>
+<div class="skills-card animate__animated animate__fadeInUp animate__delay-7s">MYSQL</div>
+</section>
+
+
+<!-- Certifications Section -->
+<section id="certifications" class="bg-dark text-center text-white">
+  <div class="container">
+    <h2 class="mb-4">Certifications</h2>
+    <div class="row justify-content-center">
+      <!-- Certificate 1 -->
+      <div class="col-md-4 mb-3">
+        <div class="card shadow p-3 animate__animated animate__flipInY">
+          <h5> Oracle Certified Data Science Certification </h5>
+          <a href="certificates/Data_science.pdf " target="_blank" class="btn btn-primary mt-2">View / Download</a>
+        </div>
+      </div>
+      <!-- Certificate 2 -->
+      <div class="col-md-4 mb-3">
+        <div class="card shadow p-3 animate__animated animate__flipInY" style="animation-delay:0.1s;">
+          <h5>HTML5 Certificates </h5>
+          <a href="certificates/html5.pdf " target="_blank" class="btn btn-primary mt-2">View / Download</a>
+        </div>
+      </div>
+      <!-- Certificate 3 -->
+      <div class="col-md-4 mb-3">
+        <div class="card shadow p-3 animate__animated animate__flipInY" style="animation-delay:0.2s;">
+          <h5>Java Programing Certificates</h5>
+          <a href="certificates/Java_programing.pdf   " target="_blank" class="btn btn-primary mt-2">View / Download</a>
+        </div>
+      </div>
+      <!-- Certificate 4 -->
+      <div class="col-md-4 mb-3">
+        <div class="card shadow p-3 animate__animated animate__flipInY" style="animation-delay:0.3s;">
+          <h5>Javascript Certificates</h5>
+          <a href="certificates/javascript.pdf   " target="_blank" class="btn btn-primary mt-2">View / Download</a>
+        </div>
+      </div>
+      <!-- Certificate 5 -->
+      <div class="col-md-4 mb-3">
+        <div class="card shadow p-3 animate__animated animate__flipInY" style="animation-delay:0.4s;">
+          <h5>Certification 5</h5>
+          <a href="certificates/cert5.pdf" target="_blank" class="btn btn-primary mt-2">View / Download</a>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 🔥 Extra 15 Professional Slides Below -->
 
-  <section>
-    <h2>Tech Stack</h2>
-    <div class="slides">
-      <div class="card">Frontend: HTML, CSS, JS, React</div>
-      <div class="card">Backend: Node.js, Express.js</div>
-      <div class="card">Database: MongoDB, Mongoose</div>
-      <div class="card">Tools: VS Code, Git, Postman</div>
+<!-- Projects Section -->
+<section id="projects" class="text-center">
+  <div class="container">
+    <h2 class="mb-4">Projects</h2>
+
+    <!-- Project 1 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 animate__animated animate__zoomIn">
+        <img src="image/Screenshot 2025-10-07 023332.png " class="img-fluid rounded shadow-lg" alt="Project 1">
+      </div>
+      <div class="col-md-6 text-start animate__animated animate__fadeInRight">
+        <h5>Full-Stack Portfolio App</h5>
+        <p>React | NodeJS | Express | MongoDB | Bootstrap</p>
+        <p>Showcases frontend & backend integration, contact form, and responsive design.</p>
+        <a href="#" class="btn btn-primary mt-2">View Code</a>
+      </div>
     </div>
-  </section>
 
-  <section>
-    <h2>Certifications</h2>
-    <ul>
-      <li>MongoDB Basics – MongoDB University</li>
-      <li>Node.js & Express Certification – Coursera</li>
-      <li>Full Stack Web Development – Udemy</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Backend Projects</h2>
-    <ul>
-      <li>RESTful API for Blog App</li>
-      <li>JWT Authentication System</li>
-      <li>Contact Form Data Storage (MongoDB)</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Tools & Platforms</h2>
-    <div class="slides">
-      <div class="card">GitHub</div>
-      <div class="card">Render</div>
-      <div class="card">Netlify</div>
-      <div class="card">Vercel</div>
-      <div class="card">Postman</div>
+    <!-- Project 2 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 order-md-2 animate__animated animate__zoomIn">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgRdA625t5rn_iAHPXTYaoi2PvR4pPZV0ugQ&s" class="img-fluid rounded shadow-lg" alt="Project 2">
+      </div>
+      <div class="col-md-6 order-md-1 text-start animate__animated animate__fadeInLeft">
+        <h5>E-Commerce Platform</h5>
+        <p>React | NodeJS | Express | MongoDB | Stripe API</p>
+        <p>Shopping cart, payment integration, admin dashboard for inventory management.</p>
+        <a href="#" class="btn btn-primary mt-2">View Code</a>
+      </div>
     </div>
-  </section>
 
-  <section>
-    <h2>Work Experience</h2>
-    <p><strong>Intern – Web Development</strong><br>Built REST APIs and optimized database queries using MongoDB and Node.js.</p>
-  </section>
+    <!-- Project 3 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 animate__animated animate__zoomIn">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfxbU9XlDwsYsuhCsmmoW4ninPzaMCf3ybA&s " class="img-fluid rounded shadow-lg" alt="Project 3">
+      </div>
+      <div class="col-md-6 text-start animate__animated animate__fadeInRight">
+        <h5>Blog Website</h5>
+        <p>NodeJS | Express | MongoDB | EJS</p>
+        <p>Create, edit, delete blog posts, dynamic routes, responsive design.</p>
+        <a href="#" class="btn btn-primary mt-2">View Code</a>
+      </div>
+    </div>
 
-  <section>
-    <h2>Achievements</h2>
-    <ul>
-      <li>Top 10 finalist in Smart India Hackathon</li>
-      <li>Built and deployed 5+ MERN projects</li>
-    </ul>
-  </section>
+    <!-- Project 4 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 order-md-2 animate__animated animate__zoomIn">
+        <img src="https://www.projectmanager.com/wp-content/uploads/2023/09/tab-customization-1.jpg" class="img-fluid rounded shadow-lg" alt="Project 4">
+      </div>
+      <div class="col-md-6 order-md-1 text-start animate__animated animate__fadeInLeft">
+        <h5>Portfolio Management System</h5>
+        <p>React | NodeJS | Express | MongoDB</p>
+        <p>Tracks projects, skills, and user feedback with interactive UI.</p>
+        <a href="#" class="btn btn-primary mt-2">View Code</a>
+      </div>
+    </div>
 
-  <section>
-    <h2>API Integrations</h2>
-    <p>Worked with APIs like Stripe, Razorpay, and OpenWeather to build functional, real-world web apps.</p>
-  </section>
+    <!-- Project 5 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 animate__animated animate__zoomIn">
+        <img src="https://www.q3tech.com/wp-content/uploads/2024/01/AI-1-1.jpg " class="img-fluid rounded shadow-lg" alt="Project 5">
+      </div>
+      <div class="col-md-6 text-start animate__animated animate__fadeInRight">
+        <h5>AI/ML Mini Project</h5>
+        <p>Python | Machine Learning | NodeJS API</p>
+        <p>Predictive model integration with web interface, showcasing ML skills.</p>
+        <a href="#" class="btn btn-primary mt-2">View Code</a>
+      </div>
+    </div>
 
-  <section>
-    <h2>Version Control</h2>
-    <p>Efficiently manage projects using Git for branching, commits, and pull requests on GitHub.</p>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>Deployment</h2>
-    <p>Experienced with deploying web apps on Netlify, Render, and Vercel for both frontend and backend.</p>
-  </section>
+<!-- Work Experience -->
+<section id="work" class="bg-light text-center">
+  <div class="container">
+    <h2 class="mb-4">Work Experience / Internships</h2>
+    <p>No official internships yet. Placeholder for future updates.</p>
+  </div>
+</section>
 
-  <section>
-    <h2>Testimonials</h2>
-    <blockquote>"Prem is an excellent backend developer with a sharp understanding of MERN stack."</blockquote>
-  </section>
+<section id="achievements" class="achievements">
+  <h2>Achievements & Certifications</h2>
+  <div class="achievement-cards">
+    <div class="achievement-card">
+      <h3>Hackathon Participate</h3>
+      <p>Participate in SIH at National Level Hackathon 2025 </p>
+    </div>
+    <div class="achievement-card">
+      <h3>Full Stack Certificate</h3>
+      <p>Completed Full Stack Web Development from Cohort.</p>
+    </div>
+    <div class="achievement-card">
+      <h3>Machine Learning</h3>
+      <p>Certified in Data Science  fundamentals by Oracle</p>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <h2>Future Goals</h2>
-    <p>To become a proficient full-stack developer and contribute to scalable, impactful applications.</p>
-  </section>
 
-  <section>
-    <h2>Resume</h2>
-    <p><a href="#" target="_blank">Download My Resume (PDF)</a></p>
-  </section>
-
-  <section>
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required /><br><br>
-      <input type="email" placeholder="Your Email" required /><br><br>
-      <textarea placeholder="Your Message" required></textarea><br><br>
-      <button type="submit">Send Message</button>
+<!-- Contact Form -->
+<section id="contact" class="bg-light text-center">
+  <div class="container">
+    <h2 class="mb-4">Contact Me</h2>
+    <form action="/api/contact" method="POST" class="mx-auto" style="max-width:600px;">
+      <div class="mb-3"><input type="text" name="name" class="form-control" placeholder="Your Name" required></div>
+      <div class="mb-3"><input type="email" name="email" class="form-control" placeholder="Your Email" required></div>
+      <div class="mb-3"><textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea></div>
+      <button type="submit" class="btn btn-primary w-100">Send Message</button>
     </form>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2025 Prem Mishra | Built with ❤️ using HTML, CSS & JS</p>
-  </footer>
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+  <p>&copy; 2025 Prem Prakash Mishra | <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" class="text-white">LinkedIn</a></p>
+  <a href="#top" class="btn btn-light btn-sm mt-2">Back to Top</a>
+</footer>
 
-  <script>
-    const toggle = document.getElementById('themeToggle');
-    toggle.addEventListener('click', () => {
-      const theme = document.body.getAttribute('data-theme');
-      if (theme === 'dark') {
-        document.body.setAttribute('data-theme', 'light');
-        toggle.textContent = '🌙';
-      } else {
-        document.body.setAttribute('data-theme', 'dark');
-        toggle.textContent = '☀️';
-      }
-    });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
 
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, message }),
+  });
+
+  const data = await res.json();
+  alert(data.message);
+});
+
+  const toggle = document.getElementById("darkModeToggle");
+  const body = document.body;
+
+  // Check saved mode
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    toggle.checked = true;
+  }
+
+  toggle.addEventListener("change", () => {
+    if (toggle.checked) {
+      body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  });
+
+
+
+
+
+
+
+
+
+</script>
 </body>
 </html>
