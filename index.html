@@ -1,194 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prem Prakash Mishra Portfolio</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prem Mishra | MERN Stack Developer</title>
   <style>
-    /* Hero Section */
-    /*this is css*/
-    .hero {
-      height: 100vh;
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      color: white;
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #222;
+      --primary-color: #007bff;
+    }
+    [data-theme="dark"] {
+      --bg-color: #111;
+      --text-color: #f5f5f5;
+      --primary-color: #1e90ff;
+    }
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.4s ease;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: var(--primary-color);
+      color: #fff;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: auto;
+      border-bottom: 1px solid #ccc;
+    }
+    h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--primary-color);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    .skills, .projects, .slides {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: rgba(0,0,0,0.03);
+      padding: 1rem;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    [data-theme="dark"] .card {
+      background: rgba(255,255,255,0.1);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    footer {
       text-align: center;
-      animation: fadeIn 2s ease-in-out;
+      padding: 2rem;
+      background: var(--primary-color);
+      color: #fff;
     }
-    .hero img {
-      border: 5px solid white;
-      border-radius: 50%;
-      width: 150px;
-      margin-bottom: 20px;
-      animation: slideDown 1.5s ease forwards;
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
     }
-    .hero h1 {
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-      animation: fadeIn 2s 0.5s forwards;
-      opacity: 0;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-      animation: fadeIn 2s 1s forwards;
-      opacity: 0;
-    }
-
-    h2 { margin-bottom: 30px; font-weight: bold; }
-
-    section { opacity: 0; transform: translateY(30px); animation: slideUp 1s forwards; animation-delay: 0.5s; }
-
-    .card { transition: transform 0.3s, box-shadow 0.3s; border-radius: 15px; }
-    .card:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
-
-    .project-card { position: relative; overflow: hidden; border-radius: 15px; margin-bottom: 20px; }
-    .project-card img { width: 100%; transition: transform 0.5s; border-radius: 15px; }
-    .project-card:hover img { transform: scale(1.1); }
-    .project-card .overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.4); color: white;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity 0.3s; font-size: 1.2rem; border-radius: 15px;
-    }
-    .project-card:hover .overlay { opacity: 1; }
-
-    .cert-btn {
-      background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
-      color: #fff; font-weight: bold; border: none;
-      transition: transform 0.3s; margin-bottom: 15px;
-    }
-    .cert-btn:hover { transform: scale(1.05) rotate(-2deg); transition: all 0.3s ease; }
-
-    @keyframes fadeIn { to { opacity: 1; } }
-    @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
-
-    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">Prem Mishra</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
+  <div class="dark-toggle" id="themeToggle">🌙</div>
+
+  <header>
+    <h1>Prem Mishra</h1>
+    <p>MERN Stack Developer | Backend Engineer | Data Enthusiast</p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>I'm a passionate MERN Stack Developer from Pune, skilled in developing efficient, scalable, and user-friendly web applications. I focus on backend architecture, APIs, and database design.</p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card">MongoDB</div>
+      <div class="card">Express.js</div>
+      <div class="card">React.js</div>
+      <div class="card">Node.js</div>
+      <div class="card">REST API</div>
+      <div class="card">JavaScript (ES6+)</div>
+      <div class="card">Git & GitHub</div>
+      <div class="card">Postman</div>
     </div>
-  </div>
-</nav>
+  </section>
 
-<!-- Hero Section -->
-<section class="hero d-flex align-items-center justify-content-center text-center" id="home">
-  <div class="container">
-    <img src="images/profile.jpg" alt="Prem Mishra">
-    <h1>Prem Prakash Mishra</h1>
-    <p>He/Him | Honor in AIML | MERN Stack Developer | DSA & Machine Learning</p>
-    <p>Attended SINHGAD INSTITUTE OF TECHNOLOGY, Lonavla</p>
-    <a href="#contact" class="btn btn-primary btn-lg mt-3">Hire Me</a>
-  </div>
-</section>
-
-<!-- About Section -->
-<section class="py-5" id="about">
-  <div class="container">
-    <h2 class="text-center">About Me</h2>
-    <p class="text-center">I am Prem Prakash Mishra, a passionate developer skilled in full-stack web development, DSA in Java, and Machine Learning. I enjoy building scalable web applications using modern technologies and continuously learning new tools to enhance my skills.</p>
-  </div>
-</section>
-
-<!-- Skills Section -->
-<section class="bg-light py-5" id="skills">
-  <div class="container">
-    <h2 class="text-center">Skills</h2>
-    <div class="row text-center">
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#f6d365,#fda085);"><h5>HTML</h5></div></div>
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#a1c4fd,#c2e9fb);"><h5>CSS</h5></div></div>
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#fbc2eb,#a6c1ee);"><h5>JavaScript</h5></div></div>
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#fdcbf1,#e6dee9);"><h5>React</h5></div></div>
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#84fab0,#8fd3f4);"><h5>NodeJS</h5></div></div>
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#fccb90,#d57eeb);"><h5>ExpressJS</h5></div></div>
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#a18cd1,#fbc2eb);"><h5>MongoDB</h5></div></div>
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#f6d365,#ff9a9e);"><h5>MySQL</h5></div></div>
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#cfd9df,#e2ebf0);"><h5>DSA (Java)</h5></div></div>
-      <div class="col-md-3 mb-3"><div class="card p-3" style="background: linear-gradient(135deg,#ffecd2,#fcb69f);"><h5>Machine Learning</h5></div></div>
+  <section>
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">Portfolio Website</div>
+      <div class="card">E-Commerce Platform</div>
+      <div class="card">Blog App (MERN)</div>
+      <div class="card">Smart Classroom Scheduler</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Projects Section -->
-<section class="py-5" id="projects">
-  <div class="container">
-    <h2 class="text-center">Projects</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="project-card">
-          <img src="https://via.placeholder.com/350x200" alt="Project 1">
-          <div class="overlay">E-Commerce App</div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="project-card">
-          <img src="https://via.placeholder.com/350x200" alt="Project 2">
-          <div class="overlay">Blog Platform</div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="project-card">
-          <img src="https://via.placeholder.com/350x200" alt="Project 3">
-          <div class="overlay">Portfolio Website</div>
-        </div>
-      </div>
+  <!-- 🔥 Extra 15 Professional Slides Below -->
+
+  <section>
+    <h2>Tech Stack</h2>
+    <div class="slides">
+      <div class="card">Frontend: HTML, CSS, JS, React</div>
+      <div class="card">Backend: Node.js, Express.js</div>
+      <div class="card">Database: MongoDB, Mongoose</div>
+      <div class="card">Tools: VS Code, Git, Postman</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Certificates Section -->
-<section class="bg-light py-5" id="certificates">
-  <div class="container">
-    <h2 class="text-center">Certificates</h2>
-    <div class="row text-center">
-      <div class="col-md-4 mb-3"><a href="documents/cert1.pdf" target="_blank" class="btn cert-btn w-100 py-3">Certificate 1</a></div>
-      <div class="col-md-4 mb-3"><a href="documents/cert2.pdf" target="_blank" class="btn cert-btn w-100 py-3">Certificate 2</a></div>
-      <div class="col-md-4 mb-3"><a href="documents/cert3.pdf" target="_blank" class="btn cert-btn w-100 py-3">Certificate 3</a></div>
-      <div class="col-md-4 mb-3"><a href="documents/cert4.pdf" target="_blank" class="btn cert-btn w-100 py-3">Certificate 4</a></div>
-      <div class="col-md-4 mb-3"><a href="documents/cert5.pdf" target="_blank" class="btn cert-btn w-100 py-3">Certificate 5</a></div>
+  <section>
+    <h2>Certifications</h2>
+    <ul>
+      <li>MongoDB Basics – MongoDB University</li>
+      <li>Node.js & Express Certification – Coursera</li>
+      <li>Full Stack Web Development – Udemy</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Backend Projects</h2>
+    <ul>
+      <li>RESTful API for Blog App</li>
+      <li>JWT Authentication System</li>
+      <li>Contact Form Data Storage (MongoDB)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tools & Platforms</h2>
+    <div class="slides">
+      <div class="card">GitHub</div>
+      <div class="card">Render</div>
+      <div class="card">Netlify</div>
+      <div class="card">Vercel</div>
+      <div class="card">Postman</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact Section -->
-<section class="py-5" id="contact">
-  <div class="container">
-    <h2 class="text-center">Contact Me</h2>
-    <form class="mx-auto" style="max-width:600px;">
-      <div class="mb-3"><label class="form-label">Name</label><input type="text" class="form-control" placeholder="Your Name"></div>
-      <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="Your Email"></div>
-      <div class="mb-3"><label class="form-label">Message</label><textarea class="form-control" rows="5" placeholder="Your Message"></textarea></div>
-      <button type="submit" class="btn btn-primary">Send Message</button>
+  <section>
+    <h2>Work Experience</h2>
+    <p><strong>Intern – Web Development</strong><br>Built REST APIs and optimized database queries using MongoDB and Node.js.</p>
+  </section>
+
+  <section>
+    <h2>Achievements</h2>
+    <ul>
+      <li>Top 10 finalist in Smart India Hackathon</li>
+      <li>Built and deployed 5+ MERN projects</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>API Integrations</h2>
+    <p>Worked with APIs like Stripe, Razorpay, and OpenWeather to build functional, real-world web apps.</p>
+  </section>
+
+  <section>
+    <h2>Version Control</h2>
+    <p>Efficiently manage projects using Git for branching, commits, and pull requests on GitHub.</p>
+  </section>
+
+  <section>
+    <h2>Deployment</h2>
+    <p>Experienced with deploying web apps on Netlify, Render, and Vercel for both frontend and backend.</p>
+  </section>
+
+  <section>
+    <h2>Testimonials</h2>
+    <blockquote>"Prem is an excellent backend developer with a sharp understanding of MERN stack."</blockquote>
+  </section>
+
+  <section>
+    <h2>Future Goals</h2>
+    <p>To become a proficient full-stack developer and contribute to scalable, impactful applications.</p>
+  </section>
+
+  <section>
+    <h2>Resume</h2>
+    <p><a href="#" target="_blank">Download My Resume (PDF)</a></p>
+  </section>
+
+  <section>
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required /><br><br>
+      <input type="email" placeholder="Your Email" required /><br><br>
+      <textarea placeholder="Your Message" required></textarea><br><br>
+      <button type="submit">Send Message</button>
     </form>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-3">
-  &copy; 2025 Prem Prakash Mishra. All Rights Reserved.
-</footer>
+  <footer>
+    <p>© 2025 Prem Mishra | Built with ❤️ using HTML, CSS & JS</p>
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    toggle.addEventListener('click', () => {
+      const theme = document.body.getAttribute('data-theme');
+      if (theme === 'dark') {
+        document.body.setAttribute('data-theme', 'light');
+        toggle.textContent = '🌙';
+      } else {
+        document.body.setAttribute('data-theme', 'dark');
+        toggle.textContent = '☀️';
+      }
+    });
+  </script>
+
 </body>
 </html>
